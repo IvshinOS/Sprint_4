@@ -3,13 +3,8 @@ package scootertests;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
-import ru.yandex.praktikum.MainPage;
-import ru.yandex.praktikum.OrderAcceptWind;
-import ru.yandex.praktikum.OrderPage;
-import ru.yandex.praktikum.RentOrderPage;
+import ru.yandex.praktikum.*;
 
-import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertTrue;
 
 //Тест удачного заказа самоката
@@ -75,7 +70,8 @@ public class OrderingScooterTest extends TestBase{
         OrderAcceptWind orderAcceptWind = new OrderAcceptWind(driver);
         orderAcceptWind.clickYesButton();
 
-        boolean resultOrder = driver.findElement(By.xpath("//div[text()='Заказ оформлен']")).isDisplayed();
+        WindowOrderIsOk windowOrderIsOk = new WindowOrderIsOk(driver);
+        boolean resultOrder = windowOrderIsOk.isVisibleTextOkInWindow();
         assertTrue(resultOrder);
 
     }
